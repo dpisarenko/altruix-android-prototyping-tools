@@ -105,6 +105,14 @@ public abstract class AbstractService<PersistenceClass extends IPersistence,
 
 	private Map<String,Type> getGenericTypes()
 	{
+		/**
+		 * The idea for implementing this method came from the guys at StackOverflow,
+		 * especially rec.
+		 * 
+		 * http://stackoverflow.com/questions/18636150/how-to-get-the-class-object-of-a-java-generic
+		 * 
+		 * http://stackoverflow.com/users/2511197/rec
+		 */
 		final Map<String,Type> result = new HashMap<String,Type>();
 		
 		@SuppressWarnings("rawtypes")
