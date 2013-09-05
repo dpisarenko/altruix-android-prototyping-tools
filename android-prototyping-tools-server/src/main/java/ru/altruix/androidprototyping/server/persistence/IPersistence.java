@@ -2,7 +2,8 @@
  * Copyright (C) Dmitri Pisarenko
  * http://altruix.wordpress.com/
  */
-package ru.altruix.androidprototyping.server;
+package ru.altruix.androidprototyping.server.persistence;
+
 
 /**
  *
@@ -10,5 +11,5 @@ package ru.altruix.androidprototyping.server;
  *
  */
 public interface IPersistence {
-
+	public <T> T runAction(final IPersistenceAction<T> aAction) throws InterruptedException;
 }
