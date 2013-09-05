@@ -61,6 +61,11 @@ public abstract class AbstractService<PersistenceClass extends IPersistence,
 			response = (ResponseClass) responseClass.newInstance();
 			response.setRequestProcessedSuccessfully(false);
 		}
+		catch (final IllegalAccessException exception)
+		{
+			LOGGER.error("", exception);
+			return "";
+		}
 		catch (final InstantiationException exception)
 		{
 			LOGGER.error("", exception);
