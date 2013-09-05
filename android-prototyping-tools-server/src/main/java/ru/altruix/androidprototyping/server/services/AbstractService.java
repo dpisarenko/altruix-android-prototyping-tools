@@ -17,8 +17,10 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.JsonProcessingException;
 
 import ru.altruix.androidprototyping.server.persistence.IPersistence;
+import sun.org.mozilla.javascript.json.JsonParser;
 
 
 /**
@@ -84,10 +86,18 @@ public abstract class AbstractService<PersistenceClass extends IPersistence,
 			LOGGER.error("", exception);
 		} catch (final IOException exception) {
 			LOGGER.error("", exception);
-		} 
+		} 	
 		finally
 		{
-			return mapper.writeValueAsString(response);
+			try
+			{
+				return mapper.writeValueAsString(response);
+			}
+			catch (final JsonProcessingException exception)
+			{
+				LOGGER.error("", exception);
+				return "";				
+			}
 		}
 
 		
