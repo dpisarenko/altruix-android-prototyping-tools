@@ -5,11 +5,11 @@
   <parent>
     <groupId>ru.altruix</groupId>
     <artifactId>android-prototyping-tools</artifactId>
-    <version>0.1</version>
+    <version>1.0</version>
   </parent>
   <groupId>ru.altruix</groupId>
   <artifactId>android-prototyping-tools-client</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <name>android-prototyping-tools-client</name>
   <url>http://maven.apache.org</url>
   <properties>

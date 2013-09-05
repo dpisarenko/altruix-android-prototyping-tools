@@ -4,7 +4,7 @@
 
   <groupId>ru.altruix</groupId>
   <artifactId>android-prototyping-tools</artifactId>
-  <version>0.1</version>
+  <version>1.0</version>
   <packaging>pom</packaging>
   <modules>
     <module>android-prototyping-tools-client</module>
