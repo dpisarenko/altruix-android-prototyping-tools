@@ -52,35 +52,40 @@ public abstract class AbstractService<PersistenceClass extends IPersistence,
 	}
 	
 	public String processRequest(final String aRequestAsText)
-	{
-		@SuppressWarnings("unchecked")
-		final ResponseClass response = (ResponseClass) responseClass.newInstance();
-		
-		response.setRequestProcessedSuccessfully(false);
+	{		
 		final ObjectMapper mapper = new ObjectMapper();
 
+		ResponseClass response = null;
+		try
+		{
+			response = (ResponseClass) responseClass.newInstance();
+			response.setRequestProcessedSuccessfully(false);
+		}
+		catch (final InstantiationException exception)
+		{
+			LOGGER.error("", exception);
+			return "";
+		}
+		
 		try {						
-			final RequestClass request = mapper.readValue(aRequestAsText, 
+			final RequestClass request = (RequestClass) mapper.readValue(aRequestAsText, 
 					requestClass);
 			
 			fillResponseWithData(request, response);
 			response.setRequestProcessedSuccessfully(true);			
-			return mapper.writeValueAsString(response);
 		} catch (final JsonParseException exception) {
 			LOGGER.error("", exception);
-			return mapper.writeValueAsString(response);
 		} catch (final JsonMappingException exception) {
 			LOGGER.error("", exception);
-			return mapper.writeValueAsString(response);
 		} catch (final IOException exception) {
 			LOGGER.error("", exception);
-			return mapper.writeValueAsString(response);
 		} 
-		catch (final InterruptedException exception) {
-			LOGGER.error("", exception);		
+		finally
+		{
+			return mapper.writeValueAsString(response);
 		}
 
-		return mapper.writeValueAsString(response);
+		
 		
 	}
 
