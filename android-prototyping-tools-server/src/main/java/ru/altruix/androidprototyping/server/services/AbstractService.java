@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.JsonProcessingException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import ru.altruix.androidprototyping.server.persistence.IPersistence;
 import sun.org.mozilla.javascript.json.JsonParser;
