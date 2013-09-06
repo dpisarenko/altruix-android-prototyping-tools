@@ -38,10 +38,10 @@ public abstract class AbstractService<PersistenceClass extends IPersistence,
 	
 	public AbstractService()
 	{
-		final Map<String,Type> genericTypes = getGenericTypes();
-		
-		requestClass = genericTypes.get("RequestClass").getClass();
-		responseClass = genericTypes.get("ResponseClass").getClass();
+//		final Map<String,Type> genericTypes = getGenericTypes();
+//		
+//		requestClass = genericTypes.get("RequestClass").getClass();
+//		responseClass = genericTypes.get("ResponseClass").getClass();
 	}
 	
 	public PersistenceClass getPersistence() {

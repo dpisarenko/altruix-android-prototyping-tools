@@ -4,8 +4,7 @@
  */
 package ru.altruix.androidprototyping.server.services;
 
-import java.lang.reflect.Type;
-import java.util.Map;
+import java.util.List;
 
 /**
  *
@@ -14,5 +13,5 @@ import java.util.Map;
  */
 public interface IGenericTypeBindigsFinder {
 	@SuppressWarnings("rawtypes")
-	Map<String,Type> getGenericTypes(final Class aClass);
+	List<Class> getGenericTypes(final Class aClass);
 }

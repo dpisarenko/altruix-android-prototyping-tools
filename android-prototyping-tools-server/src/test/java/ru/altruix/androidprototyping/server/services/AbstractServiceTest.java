@@ -12,9 +12,9 @@ import org.junit.Test;
  *
  */
 public class AbstractServiceTest {
-	@Test
-	public void testAbstractServiceDeterminesClassesOfRequestAndResponse()
-	{
-		
-	}
+//	@Test
+//	public void testAbstractServiceDeterminesClassesOfRequestAndResponse()
+//	{
+//		
+//	}
 }
