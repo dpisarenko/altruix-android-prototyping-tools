@@ -6,10 +6,8 @@ package ru.altruix.androidprototyping.server.services;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -29,36 +27,19 @@ public class GenericTypeBindigsFinder implements IGenericTypeBindigsFinder {
 		 * 
 		 * http://stackoverflow.com/users/2511197/rec
 		 */
-		final Map<String,Type> result = new HashMap<String,Type>();
+		final List<Class> result = new LinkedList<Class>();
 				
 		final ParameterizedType gen = (ParameterizedType) aClass.getGenericSuperclass();
 		
-		System.out.println("gen: " + gen.getClass().getName());
-		
-		final TypeVariable<?> typeVars[] = aClass.getTypeParameters();
 		final Type [] types = gen.getActualTypeArguments();
-		
-		System.out.println("typeVars 2: " + gen.getClass().getTypeParameters().length);
-		
-		System.out.println("types: " + types.length);
-		
+				
 		for (int i = 0; i < types.length; i++) {
 			if (types[i] instanceof Class)
 			{
-				Class clazz = (Class)types[i];
-				
-				System.out.println("Name: " + clazz.getCanonicalName());
+				final Class clazz = (Class)types[i];
+				result.add(clazz);
 			}
-			
-			
 		}
-		
-		
-	    for (int i = 0; i < typeVars.length; i++) {
-	    	System.out.println("Name: " + typeVars[i].getName());
-	    	
-	    	result.put(typeVars[i].getName(), types[i]);
-	    }
 		
 		return result;
 	}

@@ -32,7 +32,15 @@ public class GenericTypeBindigsFinderTest {
 		
 		assertThat(genericTypes).isNotNull();
 		assertThat(genericTypes.size()).isEqualTo(3);
-		assertThat(genericTypes.get(0)).isNotNull();
-		assertThat(genericTypes.get(0)).isEqualTo(MockPersistence.class);
+		checkBoundClass(genericTypes, 0, MockPersistence.class);
+		checkBoundClass(genericTypes, 1, MockRequest.class);
+		checkBoundClass(genericTypes, 2, MockResponse.class);
+	}
+
+	@SuppressWarnings("rawtypes")
+	private void checkBoundClass(final List<Class> genericTypes, int aIndex, 
+			final Class aExpectedClass) {
+		assertThat(genericTypes.get(aIndex)).isNotNull();
+		assertThat(genericTypes.get(aIndex)).isEqualTo(aExpectedClass);
 	}
 }
