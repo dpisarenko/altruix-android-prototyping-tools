@@ -8,9 +8,9 @@ import ru.altruix.androidprototyping.server.persistence.IPersistence;
 import ru.altruix.androidprototyping.server.persistence.IPersistenceAction;
 
 /**
- *
+ * 
  * @author Dmitri Pisarenko
- *
+ * 
  */
 public class MockPersistence implements IPersistence {
 

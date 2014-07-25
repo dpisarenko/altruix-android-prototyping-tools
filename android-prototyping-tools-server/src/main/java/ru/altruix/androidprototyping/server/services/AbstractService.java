@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import ru.altruix.androidprototyping.server.persistence.IPersistence;
+import ru.altruix.androidprototyping.server.persistence.IPersistenceState;
 
 
 /**

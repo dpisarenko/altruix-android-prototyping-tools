@@ -5,17 +5,18 @@
 package ru.altruix.androidprototyping.server.persistence;
 
 /**
- *
+ * 
  * @author Dmitri Pisarenko
- *
+ * 
  */
-public abstract class AbstractThreadSafePersistence implements IPersistence {
+public abstract class AbstractThreadSafePersistence<PersistenceState extends IPersistenceState>
+		implements IPersistence {
 	private boolean busy = false;
 
-	public <T> T runAction(final IPersistenceAction<T> aAction) throws InterruptedException
-	{
+	public <T> T runAction(final IPersistenceAction<T> aAction)
+			throws InterruptedException {
 		T returnValue = null;
-		
+
 		waitUntilIdle();
 		synchronized (this) {
 			busy = true;
@@ -26,7 +27,7 @@ public abstract class AbstractThreadSafePersistence implements IPersistence {
 
 			notifyAll();
 		}
-		
+
 		return returnValue;
 	}
 
@@ -36,5 +37,5 @@ public abstract class AbstractThreadSafePersistence implements IPersistence {
 		}
 	}
 
-	protected abstract IPersistenceState getPersistenceState();
+	protected abstract PersistenceState getPersistenceState();
 }
